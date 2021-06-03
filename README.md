@@ -33,31 +33,22 @@ will help people to ease their business, and daily activity to make a safer and 
 3. Type `npm install` or `yarn install`
 4. Import attached SQL file
 5. Generate .env file containing
-  -PORT=yourport
-  -SALT=yourBcryptRounds
-  -MAILER=yourLessSecureMail
-  -MAILERPASS=emailPassword
-  -DB_HOST=yourDBHost
-  -DB_USER=yourDBUser
-  -DB_PASS=yourDBPass (if any)
-  -DB_NAME=payme
+    #PORT=yourport
+    #SALT=yourBcryptRounds
+    #MAILER=yourLessSecureMail
+    #MAILERPASS=emailPassword
+    #DB_HOST=yourDBHost
+    #DB_USER=yourDBUser
+    #DB_PASS=yourDBPass (if any)
+    #DB_NAME=payme
 
 ## Acknowledgements
 
-- [Axios](https://www.npmjs.com/package/axios)
-- [Vuex](https://vuex.vuejs.org/)
+- [NodeJS](https://nodejs.org/en/)
+- [ExpressJS](https://expressjs.com/)
 
 ## License - untuk project individu
 
-© [Bagus Tri Harjanto](https://github.com/bagusth15/)
-
-## Team - untuk project team
-
-> All Members of Default Team
-
-| <a href="#" target="_blank">**Full-Stack Developer & Team Leader**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | <a href="#" target="_blank">**Back-End Developer**</a> | <a href="#" target="_blank">**Back-End Developer**</a> | <a href="#" target="_blank">**Back-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | 
-| :---:|:---:|:---:|:---:|:---:|:---: |
-| [![Full-Stack Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) | [![Front-End Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) | [![Front-End Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) | [![Back-End Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) | [![Back-End Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) | [![Back-End Developer Image](https://avatars1.githubusercontent.com/u/36648956?s=460&u=231204fcec6ae5e59f7249acf062af41d00fbc1c&v=4)](https://github.com/Bagusth15) |
-| <a href="https://github.com/Bagusth15" target="_blank">`https://github.com/Bagusth15`</a> | <a href="https://github.com/link_github_frontend" target="_blank">`https://github.com/link_github_frontend`</a> | <a href="https://github.com/link_github_frontend" target="_blank">`https://github.com/link_github_frontend`</a> | <a href="https://github.com/link_github_backend" target="_blank">`https://github.com/link_github_backend`</a> | <a href="https://github.com/link_github_backend" target="_blank">`https://github.com/link_github_backend`</a> | <a href="https://github.com/link_github_backend" target="_blank">`https://github.com/link_github_backend`</a> |
+© [Juliant](https://github.com/iJuliant/)
 
 ---
