@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken')
+const authModel = require('../modules/auth/authModel')
 const wrapper = require('../helpers/wrapper')
 
 module.exports = {
 
   authentication: (req, res, next) => {
-    let token = req.headers.authentication
+    let token = req.headers.authorization
 
     if (token) {
       token = token.split(' ')[1]
@@ -37,6 +38,17 @@ module.exports = {
         401,
         'Please verify your email to continue'
       )
+    }
+  },
+
+  isRegistered: async (req, res, next) => {
+    const { email } = req.body
+    const isExist = await authModel.getDataCondition({ user_email: email })
+
+    if (isExist.length > 0) {
+      return wrapper.response(res, 403, 'Email already registered')
+    } else {
+      next()
     }
   }
 
