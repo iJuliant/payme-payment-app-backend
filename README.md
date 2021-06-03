@@ -33,14 +33,15 @@ will help people to ease their business, and daily activity to make a safer and 
 3. Type `npm install` or `yarn install`
 4. Import attached SQL file
 5. Generate .env file containing
-    #PORT=yourport
-    #SALT=yourBcryptRounds
-    #MAILER=yourLessSecureMail
-    #MAILERPASS=emailPassword
-    #DB_HOST=yourDBHost
-    #DB_USER=yourDBUser
-    #DB_PASS=yourDBPass (if any)
-    #DB_NAME=payme
+
+    `PORT=yourport`
+    `SALT=yourBcryptRounds`
+    `MAILER=yourLessSecureMail`
+    `MAILERPASS=emailPassword`
+    `DB_HOST=yourDBHost`
+    `DB_USER=yourDBUser`
+    `DB_PASS=yourDBPass (if any)`
+    `DB_NAME=payme`
 
 ## Acknowledgements
 
