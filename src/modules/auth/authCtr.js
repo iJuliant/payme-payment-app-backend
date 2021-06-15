@@ -19,7 +19,6 @@ module.exports = {
         user_email: email,
         user_password: encrypted,
         user_phone: '+62',
-        user_is_verified: '0',
         user_otp: '0'
       }
 
@@ -94,11 +93,16 @@ module.exports = {
 
       if (isExist.length > 0) {
         const setData = {
-          user_is_verified: 1,
+          user_verified: 1,
           user_updated_at: new Date(Date.now())
         }
         const result = await userModel.update(setData, id)
-        return wrapper.response(res, 200, 'Verification succeeded', result)
+        console.log(isExist)
+        return res.render('index.ejs', {
+          data: result,
+          user: isExist[0]
+        })
+        // return wrapper.response(res, 200, 'Verification succeeded', result)
       } else {
         console.log(id)
       }
