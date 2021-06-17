@@ -11,7 +11,7 @@ Route.get(
 )
 
 Route.patch(
-  '/update-profile',
+  '/update-profile/:id',
   authentication,
   uploadFile,
   updateProfile

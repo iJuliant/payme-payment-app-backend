@@ -1,5 +1,6 @@
 require('dotenv').config()
 const authModel = require('./authModel')
+const transactionModel = require('../transaction/transactionModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { sendMail } = require('../../helpers/mailer')
@@ -11,23 +12,36 @@ module.exports = {
 
   register: async (req, res) => {
     try {
-      const { name, email, password } = req.body
+      const { name, email, phone, password } = req.body
       const encrypted = bcrypt.hashSync(password, salt)
 
       const setData = {
         user_name: name,
         user_email: email,
         user_password: encrypted,
-        user_phone: '+62',
+        user_phone: phone,
         user_otp: '0'
       }
 
-      const result = await authModel.register(setData)
-      delete result.user_password
-      console.log(result)
+      const isExist = await authModel.getDataCondition(`user_email = ${email}`)
+      if (isExist.length > 0) {
+        return wrapper.response(res, 404, 'Email has been registered', null)
+      } else {
+        const result = await authModel.register(setData)
+        delete result.user_password
+        console.log(result)
 
-      sendMail(email, result.id, 'verify')
-      return wrapper.response(res, 200, 'Registration success', result)
+        sendMail(email, result.id, 'verify')
+
+        const newAccount = {
+          user_id: result.id,
+          balance: 0
+        }
+
+        const seedToBalance = await transactionModel.create(newAccount)
+        console.log(seedToBalance)
+        return wrapper.response(res, 200, 'Registration success', result)
+      }
     } catch (err) {
       console.log(err)
       return wrapper.response(res, 400, 'Bad request', err)
@@ -47,8 +61,12 @@ module.exports = {
           delete payLoad.user_password
           const token = jwt.sign({ ...payLoad }, 'SECRETX', { expiresIn: '24h' })
           const result = { ...payLoad, token }
-
-          return wrapper.response(res, 200, 'Login succeed', result)
+          if (isExist[0].user_pin) {
+            return wrapper.response(res, 200, 'Login succeed', result)
+          } else {
+            return wrapper.response(res, 200, 'Login succeed', result)
+          }
+          // return wrapper.response(res, 200, 'Login succeed', result)
         } else {
           return wrapper.response(res, 401, 'Password mismatch')
         }

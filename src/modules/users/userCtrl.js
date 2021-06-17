@@ -1,6 +1,6 @@
 const fs = require('fs')
 const bcrypt = require('bcrypt')
-const helper = require('../../helpers/helper')
+// const helper = require('../../helpers/helper')
 const path = require('path')
 const wrapper = require('../../helpers/wrapper')
 const userModel = require('./userModel')
@@ -26,16 +26,16 @@ module.exports = {
 
   updateProfile: async (req, res) => {
     try {
-      const { firstName, lastName, email, phoneNumber } = req.body
-      const isExist = await userModel.getById(req.decodeToken.user_id)
-      const name = `${firstName} ${lastName}`
-      const preFixPhoneNumber = helper.numFormatter(phoneNumber)
-      const id = req.decodeToken.user_id
+      const { name, phone } = req.body
+      const { id } = req.params
+      const isExist = await userModel.getById(id)
+      // const name = `${firstName} ${lastName}`
+      // const preFixPhoneNumber = helper.numFormatter(phone)
       const setData = {
         user_name: name,
-        user_email: email,
+        user_email: isExist[0].user_email,
         user_image: req.file ? req.file.filename : '',
-        user_phone: preFixPhoneNumber,
+        user_phone: phone,
         user_updated_at: new Date(Date.now())
       }
       const result = await userModel.update(setData, id)
@@ -55,6 +55,9 @@ module.exports = {
 
       return wrapper.response(res, 200, 'Success update data', result)
     } catch (err) {
+      const { id } = req.params
+      console.log(id)
+      console.log(err)
       return wrapper.response(res, 400, 'Bad request', err)
     }
   },
